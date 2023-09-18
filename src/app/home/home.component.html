@@ -1,0 +1,12 @@
+<button class="btn btn-primary" (click)="getPlayingNow()">Get movie</button>
+
+<div class="row">
+    <div class="col" *ngFor="let movie of playinNowList">
+        <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{movie ['poster_path']}}" alt="poster">
+        <!-- https://image.tmdb.org/t/p/w220_and_h330_face/ -->
+        <!-- https://image.tmdb.org/t/p/w500/ -->
+        <li>
+            {{ movie ["title"] }}
+        </li>
+    </div>
+</div>
