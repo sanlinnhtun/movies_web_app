@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription} from 'rxjs'
@@ -9,39 +9,137 @@ import { Subscription} from 'rxjs'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   popularList=[];
-  playinNowList=[];
-  // topRatedList=[];
-  // upComingList=[];
+  playingNowList=[];
+  topRatedList=[];
+  upComingList=[];
 
   constructor(private apiService: ApiService){};
 
   movieSub: Subscription= new Subscription();
 
-  getPlayingNow() {
-    var result = this.apiService.getMovies('now_playing')
-    this.movieSub = result.subscribe({
-      next: (response: any) =>{
-        this.playinNowList= response['results']
-      },
-      error:(err: HttpErrorResponse) =>{
-        console.log(err);
-      }
+  getPopular() {
+    return new Promise((resolve)=>{
+      var result=this.apiService.getMovies('popular');
+      this.movieSub=result.subscribe({
+        next: (response: any) => {
+          this.popularList = response['results']
+          console.log(response['results'])
+          resolve(true)
+        },
+        error: (err: HttpErrorResponse) => {
+          console.log(err);
+        resolve(false)
+        }
+      })
     })
   };
 
-  getPopular() {
-    this.apiService.getMovies('popular');
-    console.log('click work!')
+  getPlayingNow() {
+    return new Promise((resolve) => {
+      var result = this.apiService.getMovies('now_playing')
+      this.movieSub = result.subscribe({
+        next: (response: any) =>{
+          this.playingNowList= response['results']
+          resolve(true)
+        },
+        error:(err: HttpErrorResponse) =>{
+          console.log(err);
+          resolve(false)
+        }
+      })
+    })
   };
 
   getTopRated() {
-    this.apiService.getMovies('top_rated');
+    return new Promise ((reslove) => {
+      var result=this.apiService.getMovies('top_rated');
+      this.movieSub =result.subscribe({
+        next:(response: any) => {
+          this.topRatedList=response['results']
+          reslove(true)
+        },
+        error: (err: HttpErrorResponse)=>{
+          console.log(err)
+          reslove(false)
+        }
+      })
+    })
   };
 
   getUpComing() {
-    this.apiService.getMovies('upcoming');
+    return new Promise ((reslove) => {
+      var result=this.apiService.getMovies('upcoming');
+      this.movieSub=result.subscribe({
+        next: (response: any)=>{
+          this.upComingList=response['results']
+          reslove(true)
+        },
+        error: (err: HttpErrorResponse) => {
+          console.log(err)
+          reslove(false)
+        }
+      })
+    })
   };
+
+  async ngOnInit() {
+
+    console.log("--------------------BEFORE-----------------")
+
+    await this.getPopular();
+
+    console.log("----------------------after----------------------")
+
+    await this.getPlayingNow();
+
+    await this.getTopRated();
+
+    await this.getUpComing();
+
+    // var result=this.apiService.getMovies('popular');
+    // this.movieSub=result.subscribe({
+    //   next: (response: any) => {
+    //     this.popularList = response['results']
+    //   },
+    //   error: (err: HttpErrorResponse) => {
+    //     console.log(err);
+    //   }
+    // });
+
+
+    // var result = this.apiService.getMovies('now_playing')
+    // this.movieSub = result.subscribe({
+    //   next: (response: any) =>{
+    //     this.playingNowList= response['results']
+    //   },
+    //   error:(err: HttpErrorResponse) =>{
+    //     console.log(err);
+    //   }
+    // });
+
+    // var result=this.apiService.getMovies('top_rated');
+    // this.movieSub =result.subscribe({
+    //   next:(response: any) => {
+    //     this.topRatedList=response['results']
+    //   },
+    //   error: (err: HttpErrorResponse)=>{
+    //     console.log(err)
+    //   }
+    // });
+
+    // var result=this.apiService.getMovies('upcoming');
+    // this.movieSub=result.subscribe({
+    //   next: (response: any)=>{
+    //     this.upComingList=response['results']
+    //   },
+    //   error: (err: HttpErrorResponse) => {
+    //     console.log(err)
+    //   }
+    // });
+  }
+
+  
 }

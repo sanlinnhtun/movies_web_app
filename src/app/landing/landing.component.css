@@ -1,0 +1,58 @@
+#lan-ba-img{
+    min-height: 100vh;
+    background-image: url('../../assets/img/UWKueA.webp');
+    background-size: cover;
+}
+
+*{
+    scroll-behavior: smooth;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: lighter;
+}
+
+.btn{
+    width: 170px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-left: 25px;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+.btn-a {
+    background-color: transparent;
+    border: 3px solid #00d7c3;
+    border-radius: 50px;
+    -webkit-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+    color: #00d7c3;
+}
+
+.btn-b{
+    background-color: transparent;
+    border: 3px solid #00d7c3;
+    border-radius: 50px;
+    -webkit-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+    color: #00d7c3;
+}
+
+.btn-1:hover{
+    box-shadow: 0 0 10px 0 #00d7c3 inset, 0 0 20px 2px #00d7c3;
+    border: 3px solid #00d7c3;
+}
+
+.btn-2:hover{
+    box-shadow: 0 0 10px 0 #00d7c3 inset, 0 0 20px 2px #00d7c3;
+    border: 3px solid #00d7c3;
+}
+
+.sign-text{
+    text-decoration: none;
+    color: #fff;
+}

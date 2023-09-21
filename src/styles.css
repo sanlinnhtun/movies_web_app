@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-attachment: fixed;
+    overflow-y: auto;
+    min-height: 100vh;
+    background-image: url('./assets/img/hero-bg.jpg');
+    background-size: cover;
+}
+
+*{
+    scroll-behavior: smooth;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: lighter;
+}

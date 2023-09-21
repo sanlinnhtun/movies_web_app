@@ -1,0 +1,23 @@
+/* id */
+#po-ba-img{
+    background-image: url('../../assets/img/service-bg.jpg');
+    background-size: cover;
+}
+
+#pl-ba-img{
+    background-image: url('../../assets/img/tv-series-bg.jpg');
+    background-size: cover;
+}
+
+#to-ba-img{
+    background-image: url('../../assets/img/top-rated-bg.jpg');
+    background-size: cover;
+}
+
+#up-ba-img{
+    background-image: url('../../assets/img/upcoming-bg.png');
+    background-size: cover;
+}
+
+/* class */
+.ba-img-sa{}
