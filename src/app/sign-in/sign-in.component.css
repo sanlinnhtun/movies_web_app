@@ -11,22 +11,26 @@
     cursor: pointer;
 }
 
-.si-ba-img{
+/* .si-ba-img{
     background-image: url('../../assets/img/Pi9BhL.jpg');
     background-size: cover;
     height: 100vh;
-}
+} */
 
 .signin-btn{
     background-color: transparent;
-    border: 3px solid #EBE76C;
+    border: 3px solid #6cebe9;
     border-radius: 50px;
     -webkit-transition: all .15s ease-in-out;
     transition: all .15s ease-in-out;
-    color: #EBE76C;
+    color: #6cebe9;
 }
 
 .signin-btn:hover {
     box-shadow: 0 0 10px 0 #00d7c3 inset, 0 0 20px 2px #00d7c3;
     border: 3px solid #00d7c3;
 }
+
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
+  }

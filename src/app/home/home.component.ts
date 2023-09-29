@@ -2,6 +2,8 @@ import { Component,OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription} from 'rxjs'
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class HomeComponent implements OnInit {
   topRatedList=[];
   upComingList=[];
 
-  constructor(private apiService: ApiService){};
+  constructor(private apiService: ApiService, private router: Router, private cookieService: CookieService){};
 
   movieSub: Subscription= new Subscription();
 
@@ -87,17 +89,15 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
 
-    console.log("--------------------BEFORE-----------------")
-
     await this.getPopular();
-
-    console.log("----------------------after----------------------")
 
     await this.getPlayingNow();
 
     await this.getTopRated();
 
     await this.getUpComing();
+
+    console.log(this.cookieService.get('token'))
 
     // var result=this.apiService.getMovies('popular');
     // this.movieSub=result.subscribe({
@@ -141,5 +141,12 @@ export class HomeComponent implements OnInit {
     // });
   }
 
+  goToDetails(movieId: number){
+    this.router.navigateByUrl(`details/${movieId}`)
+  }
   
+  logout(){
+    this.cookieService.delete('token');
+    this.router.navigateByUrl('')
+  }
 }

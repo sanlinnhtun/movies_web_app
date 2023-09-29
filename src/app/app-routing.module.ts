@@ -5,19 +5,24 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LandingComponent } from './landing/landing.component';
 import { ErrorComponentComponent } from './error-component/error-component.component';
+import { DetailsComponent } from './details/details.component';
+import { ActorsComponent } from './actors/actors.component';
+import { authGuard } from './service/auth.guard';
+import { SuggestMoviesComponent } from './suggest-movies/suggest-movies.component';
 
 const routes: Routes = [
   {
-    path:'',
-    component:LandingComponent,
+    path: '',
+    component: LandingComponent,
   },
   {
     path: 'landing',
-    component: LandingComponent
+    component: LandingComponent,
   },
   {
-    path:'home',
-    component: HomeComponent
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'signin',
@@ -25,16 +30,31 @@ const routes: Routes = [
   },
   {
     path: 'signup',
-    component: SignUpComponent
+    component: SignUpComponent,
+  },
+  {
+    path: 'details/:movieid',
+    component: DetailsComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'suggest',
+    component: SuggestMoviesComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'actors',
+    component: ActorsComponent,
+    canActivate: [authGuard],
   },
   {
     path: '**',
-    component: ErrorComponentComponent
-  }
+    component: ErrorComponentComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

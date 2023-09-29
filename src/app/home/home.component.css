@@ -1,3 +1,11 @@
+/* navbar */
+.navbar{
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
 /* id */
 #po-ba-img{
     background-image: url('../../assets/img/service-bg.jpg');
@@ -20,4 +28,50 @@
 }
 
 /* class */
-.ba-img-sa{}
+/* .ba-img-sa{} */
+
+.scroll {
+    display: flex;
+    flex-wrap: no-wrap;
+    overflow-x: auto;
+    margin: 20px;
+    height: 430px;
+    overflow-x: hidden;
+  }
+  
+  .img-shown {
+    margin-right: 10px;
+    border-radius: 2.5%;
+    margin-bottom: 7px;
+  }
+
+  .scroll {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  
+  .scroll::-webkit-scrollbar {
+    height: 3px;
+  }
+  .scroll::-webkit-scrollbar-thumb {
+    background-color: #a7cf18;
+  }
+
+.img{
+    border-radius: 2%;
+}
+
+.card{
+  height: 410px;
+  background: linear-gradient(to right, hsl(195, 14%, 17%), rgb(26, 55, 54));
+  cursor: pointer;
+}
+
+.card:hover{
+  border:2px solid hsl(65, 59%, 50%);
+}
+  /* .scroll::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+    border-radius: 6px;
+  } */
+

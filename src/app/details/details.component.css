@@ -1,0 +1,33 @@
+.actorContainer{
+    background-color: #FFC436;
+}
+
+.card{
+    height: 440px;
+    background: linear-gradient(to right, hsl(195, 14%, 17%), rgb(26, 55, 54));
+    margin-left: 5px;
+}
+
+.scroll {
+    display: flex;
+    flex-wrap: no-wrap;
+    overflow-x:auto hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    font-family: cursive;
+  }
+  
+  .scroll::-webkit-scrollbar {
+    height: 3px;
+  }
+  .scroll::-webkit-scrollbar-thumb {
+    background-color: #4B527E;
+  }
+
+.pp-actname{
+    padding: 15px;
+}
+
+.cast-pp{
+    border-radius: 2% 2% 0% 0%;
+}

@@ -1,40 +1,76 @@
 <section class="text-center si-ba-img d-flex align-items-center flex-column">
-  
-    <div class="card col-md-5" style="
-          margin-top: -100px;
-          background: hsla(0, 0%, 100%, 0.1);
-          margin-top: 100px;
-          border: #7D7C7C 1px solid;
-          box-shadow: 0 0 20px #4F709C;
-          ">
-      <div class="card-body" style="color: #FFF5E0;">
-  
-        <div class="row d-flex justify-content-center">
-          <div class="col-lg-8">
-            <h2 class="fw-bold mb-5">Sign up now</h2>
-            <form>
-              <!-- 2 column grid layout with text inputs for the first and last names -->
-              <div class="row">
-                <div class="mb-5">
-                  <div class="form-outline">
-                    <input type="email" id="form3Example1" class="form-control"  placeholder="Email address"/>
-                  </div>
+  <div
+    class="card col-md-5"
+    style="
+      margin-top: -100px;
+      background: hsla(0, 0%, 100%, 0.1);
+      margin-top: 100px;
+      border: #7d7c7c 1px solid;
+      box-shadow: 0 0 20px #4f709c;
+    "
+  >
+    <div class="card-body" style="color: #ffffff">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">SIGNIN</h2>
+          <form>
+            <!-- (ngSubmit)="signin()" #signinform="NgForm" -->
+
+            <div class="row">
+              <div class="mb-5">
+                <div class="form-outline">
+                  <label for="email"></label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="form-control"
+                    placeholder="Email address"
+                    [(ngModel)]="email"
+                    required
+                    minlength="6"
+                    #name="ngModel"
+                  />
+
+                  
+                  <span style="color: #e63131;" *ngIf="!name.valid && name.touched" >Invalid email !</span>
                 </div>
               </div>
-  
-              <!-- Email input -->
-              <div class="form-outline mb-5">
-                <input type="password" id="form3Example3" class="form-control" placeholder="password"/>
-              </div>
-  
-              <!-- Submit button -->
-              <button type="submit"  class="btn btn-info  mb-4 signin-btn">
-                Login
-              </button>
+            </div>
 
-            </form>
-          </div>
+            <!-- Email input -->
+            <div class="form-outline mb-5">
+              <label for="password"></label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="form-control"
+                placeholder="Password"
+                [(ngModel)]="password"
+                required
+                minlength="8"
+                #pass="ngModel"
+              />
+
+              <span style="color: #e63131;" *ngIf="!pass.valid && pass.touched"  >Invalid password!</span>
+            </div>
+
+            <!-- Submit button -->
+            <button
+              type="submit"
+              class="btn btn-info mb-4 signin-btn"
+              (click)="signin()"
+              [disabled]="!name.valid || !pass.valid"
+            >
+              Login
+            </button>
+
+            <!-- [disabled]="!name.valid || !pass.valid" -->
+            <!-- (click)="signin()" -->
+          </form>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

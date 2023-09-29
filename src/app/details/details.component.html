@@ -1,0 +1,31 @@
+<div>
+    <div class="d-flex mb-4">
+        <!-- [src]="'https://image.tmdb.org/t/p/w500/'+ this.posterdetail['poster_path']" -->
+        <!-- src="https://image.tmdb.org/t/p/w220_and_h330_face/{{this.posterdetail['poster_path']}}" -->
+
+        <img [src]="'https://image.tmdb.org/t/p/w500/'+ this.posterdetail['poster_path']" alt="poster">
+        <h1 style="color: white;">{{this.posterdetail['title']}}</h1>
+        <div *ngFor="let genres of genres">
+            <span style="color: aliceblue;">
+                {{genres["name"]}}
+            </span>
+        </div>
+        <p style="color: aliceblue;">{{this.posterdetail['overview']}}</p>
+    </div>
+    <div class="actorContainer mb-4">
+        <h2 style="text-align: center;">Casts</h2>
+        <div class="scroll">
+            <div  class="pp-actname" *ngFor="let cast of casts">
+                <div class="card">
+                    <img [src]="'https://image.tmdb.org/t/p/w220_and_h330_face/'+cast['profile_path']" 
+                    alt="actor profile" width="200px" height="300px" class="cast-pp">
+                    <br>
+                    <div class="p-2">
+                        <h5  style="color: #ffff; font-family: 'IBM Plex Mono', monospace;">{{cast['name']}}</h5>
+                        <h6 style="color: #cdb3c7; font-family:  'IBM Plex Mono', monospace;" >{{cast['character']}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

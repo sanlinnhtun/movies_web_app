@@ -1,66 +1,132 @@
 <!-- https://image.tmdb.org/t/p/w220_and_h330_face/ -->
 <!-- https://image.tmdb.org/t/p/w500/ -->
 
-<!-- popular movies -->
 
-<div class="card mb-5 ba-img-sa" id="po-ba-img" style="margin-top: 100px; ">
-    <div class="body-card">
-        <h1 style="color: #EBE76C;" class="p-5">Popular movies:</h1>
-        <div class="row">
-            <div class="col " *ngFor="let movie of popularList">
-                <img [src]=" 'https://image.tmdb.org/t/p/w220_and_h330_face/'+movie ['poster_path']" alt="poster">
-                <li style="color: #F8F6F4;">
-                    {{ movie ["title"] }}
-                </li>
-            </div>
+<button (click)="logout()">Logout</button>
+
+<!------ popular movies ----->
+<div  id="po-ba-img" style="margin-top: 100px">
+    <h1 style="color: #ebe76c; text-align: center;" class="p-4">Popular movies</h1>
+    <div class="scroll">
+      <div class="img-shown" *ngFor="let movie of popularList" (click)="goToDetails(movie['id'])">
+        <div class="card">
+          <img
+          [src]="
+            'https://image.tmdb.org/t/p/w220_and_h330_face/' +
+            movie['poster_path']
+          "
+          alt="poster"
+
+          class="img"
+        />
+        <ul style="color: white">
+          {{ movie["title"] }}
+        </ul>
+
+        <div class="card-title" style="margin-left: 10px; margin-top: -10px; width: 50px; height: 20px; background-color: #080202; text-align: center;">
+          <i class="fa-solid fa-star" style="color: #ffd43b">
+            <span style="color: rgb(211, 199, 199)">
+              {{ movie["vote_average"] }}
+            </span>
+          </i>
         </div>
+        </div>
+      </div>
     </div>
 </div>
 
+
 <!-- playing now movies -->
 
-<div class="card mb-5 ba-img-sa" id="pl-ba-img">
-    <div class="body-card">
-        <h1 style="color: #EBE76C;" class="p-5">Playing now movies:</h1>
-        <div class="row">
-            <div class="col " *ngFor="let movie of playingNowList" >
-                <img [src]=" 'https://image.tmdb.org/t/p/w220_and_h330_face/'+movie ['poster_path']"  alt="poster">
-                <li style="color: #F8F6F4;">
-                    {{ movie ["title"] }}
-                </li>
-            </div>
-        </div>
+<div  id="po-ba-img" style="margin-top: 100px">
+  <h1 style="color: #ebe76c; text-align: center;" class="p-4">Now playing movies</h1>
+  <div class="scroll">
+    <div class="img-shown" *ngFor="let movie of playingNowList" (click)="goToDetails(movie['id'])">
+      <div class="card">
+        <img
+        [src]="
+          'https://image.tmdb.org/t/p/w220_and_h330_face/' +
+          movie['poster_path']
+        "
+        alt="poster"
+
+        class="img"
+      />
+      <ul style="color: white">
+        {{ movie["title"] }}
+      </ul>
+
+      <div class="card-title" style="margin-left: 10px; margin-top: -10px; width: 50px; height: 20px; background-color: #080202; text-align: center;">
+        <i class="fa-solid fa-star" style="color: #ffd43b">
+          <span style="color: rgb(211, 199, 199)">
+            {{ movie["vote_average"] }}
+          </span>
+        </i>
+      </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Top rated movies -->
 
-<div class="card mb-5 ba-img-sa" id="to-ba-img">
-    <div class="body-card">
-        <h1 style="color: #EBE76C;" class="p-5">Top rated movies:</h1>
-        <div class="row">
-            <div class="col " *ngFor="let movie of topRatedList">
-                <img [src]=" 'https://image.tmdb.org/t/p/w220_and_h330_face/'+movie ['poster_path']"  alt="poster">
-                <li style="color: #F8F6F4;">
-                    {{ movie ["title"] }}
-                </li>
-            </div>
-        </div>
-    </div>
-</div>
+<div  id="po-ba-img" style="margin-top: 100px">
+  <h1 style="color: #ebe76c; text-align: center;" class="p-4">Top rated movies</h1>
+  <div class="scroll">
+    <div class="img-shown" *ngFor="let movie of topRatedList" (click)="goToDetails(movie['id'])">
+      <div class="card">
+        <img
+        [src]="
+          'https://image.tmdb.org/t/p/w220_and_h330_face/' +
+          movie['poster_path']
+        "
+        alt="poster"
 
+        class="img"
+      />
+      <ul style="color: white">
+        {{ movie["title"] }}
+      </ul>
+
+      <div class="card-title" style="margin-left: 10px; margin-top: -10px; width: 50px; height: 20px; background-color: #080202; text-align: center;">
+        <i class="fa-solid fa-star" style="color: #ffd43b">
+          <span style="color: rgb(211, 199, 199)">
+            {{ movie["vote_average"] }}
+          </span>
+        </i>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- up coming movies -->
 
-<div class="card mb-5 ba-img ba-img-sa" id="up-ba-img">
-    <div class="body-card">
-        <h1 style="color: #EBE76C;" class="p-5">Up comping movies:</h1>
-        <div class="row">
-            <div class="col " *ngFor="let movie of upComingList">
-                <img [src]=" 'https://image.tmdb.org/t/p/w220_and_h330_face/'+movie ['poster_path']"  alt="poster">
-                <li style="color: #F8F6F4;">
-                    {{ movie ["title"] }}
-                </li>
-            </div>
-        </div>
+<div  id="po-ba-img" style="margin-top: 100px">
+  <h1 style="color: #ebe76c; text-align: center;" class="p-4">Upcoming movies</h1>
+  <div class="scroll">
+    <div class="img-shown" *ngFor="let movie of upComingList" (click)="goToDetails(movie['id'])">
+      <div class="card">
+        <img
+        [src]="
+          'https://image.tmdb.org/t/p/w220_and_h330_face/' +
+          movie['poster_path']
+        "
+        alt="poster"
+
+        class=""
+      />
+      <ul style="color: white">
+        {{ movie["title"] }}
+      </ul>
+
+      <div class="card-title" style="margin-left: 10px; margin-top: -10px; width: 50px; height: 20px; background-color: #080202; text-align: center;">
+        <i class="fa-solid fa-star" style="color: #ffd43b">
+          <span style="color: rgb(211, 199, 199)">
+            {{ movie["vote_average"] }}
+          </span>
+        </i>
+      </div>
     </div>
+      </div>
+  </div>
 </div>

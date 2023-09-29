@@ -13,34 +13,88 @@
         <div class="row d-flex justify-content-center">
           <div class="col-lg-8">
             <h2 class="fw-bold mb-5">Sign up now</h2>
-            <form>
+            <form [formGroup]="signUpForm">
               <!-- 2 column grid layout with text inputs for the first and last names -->
-              <div class="row">
-                <div class="col-md-6 mb-4">
+
+
+              <div class="row mb-4">
+                <!-- first name -->
+                <div class="col-md-6 mb-1">
                   <div class="form-outline">
-                    <input type="text" id="form3Example1" class="form-control" placeholder="First name"/>
+                    <input
+                      type="text"
+                      name="text"
+                      id="text"
+                      class="form-control"
+                      placeholder="First name"
+                      formControlName="firstName"
+                    />
                   </div>
                 </div>
-                <div class="col-md-6 mb-4">
+                <!-- last name -->
+                <div class="col-md-6 mb-1">
                   <div class="form-outline">
-                    <input type="text" id="form3Example2" class="form-control" placeholder="Last name"/>
+                    <input 
+                    type="text"
+                    name="text" 
+                    id="text" 
+                    class="form-control" 
+                    placeholder="Last name"
+                    formControlName="lastName"
+                    />
                   </div>
                 </div>
+
+                <span 
+                style="color: #e63131;"
+                *ngIf="!signUpForm.controls['firstName'].valid && signUpForm.controls['firstName'].touched && 
+                !signUpForm.controls['lastName'].valid &&  signUpForm.controls['lastName'].touched"
+                >Username is required must have 9 characters!
+              </span>
+
               </div>
   
               <!-- Email input -->
               <div class="form-outline mb-4">
-                <input type="email" id="form3Example3" class="form-control" placeholder="Email address"/>
+                <input 
+                type="email" 
+                name="email"
+                id="email" 
+                class="form-control mb-1" 
+                placeholder="Email address"
+                formControlName="email"
+                />
+
+                <span style="color: #e63131;" 
+                *ngIf="!signUpForm.controls['email'].valid && signUpForm.controls['email'].touched">Invalid Email!</span>
               </div>
   
               <!-- Password input -->
               <div class="form-outline mb-4">
-                <input type="password" id="form3Example4" class="form-control" placeholder="Password"/>
+                <input 
+                type="password" 
+                name="password"
+                id="password" 
+                class="form-control mb-1" 
+                placeholder="Password"
+                formControlName="password"
+                />
+                <span style="color: #e63131;" 
+                *ngIf="!signUpForm.controls['password'].valid && signUpForm.controls['password'].touched">Invalid password!</span>
               </div>
 
               <!-- comfirm password -->
               <div class="form-outline mb-4">
-                <input type="password" id="form3Example4" class="form-control" placeholder="comfirm password"/>
+                <input 
+                type="password" 
+                name="confirmPass"
+                id="confirmPass" 
+                class="form-control mb-1" 
+                placeholder="comfirm password"
+                formControlName="confirmPass"
+                />
+                <span style="color: #e63131;" 
+                *ngIf="!signUpForm.controls['confirmPass'].valid && signUpForm.controls['confirmPass'].touched">Invalid confirmpassword!</span>
               </div>
   
               <!-- Checkbox -->
@@ -52,7 +106,12 @@
               </div>
   
               <!-- Submit button -->
-              <button type="submit" class="btn  mb-3 signup-btn">
+              <button 
+              type="submit" 
+              class="btn  mb-3 signup-btn"
+              [disabled]="!signUpForm.valid || !signUpForm.touched"
+              (click)="signUp()"
+              >
                 Sign up
               </button>
 
