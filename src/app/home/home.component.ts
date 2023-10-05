@@ -3,7 +3,7 @@ import { ApiService } from '../service/api.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription} from 'rxjs'
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -13,12 +13,18 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class HomeComponent implements OnInit {
 
+  today=Date.now()
+
+  safeSrc: SafeResourceUrl;
+
   popularList=[];
   playingNowList=[];
   topRatedList=[];
   upComingList=[];
 
-  constructor(private apiService: ApiService, private router: Router, private cookieService: CookieService){};
+  constructor(private apiService: ApiService, 
+    private router: Router, 
+    private sanitizer:DomSanitizer){ this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/vsBwcxu8bAQ");};
 
   movieSub: Subscription= new Subscription();
 
@@ -89,6 +95,8 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
 
+   console.log(Date.now())
+
     await this.getPopular();
 
     await this.getPlayingNow();
@@ -96,57 +104,10 @@ export class HomeComponent implements OnInit {
     await this.getTopRated();
 
     await this.getUpComing();
-
-    console.log(this.cookieService.get('token'))
-
-    // var result=this.apiService.getMovies('popular');
-    // this.movieSub=result.subscribe({
-    //   next: (response: any) => {
-    //     this.popularList = response['results']
-    //   },
-    //   error: (err: HttpErrorResponse) => {
-    //     console.log(err);
-    //   }
-    // });
-
-
-    // var result = this.apiService.getMovies('now_playing')
-    // this.movieSub = result.subscribe({
-    //   next: (response: any) =>{
-    //     this.playingNowList= response['results']
-    //   },
-    //   error:(err: HttpErrorResponse) =>{
-    //     console.log(err);
-    //   }
-    // });
-
-    // var result=this.apiService.getMovies('top_rated');
-    // this.movieSub =result.subscribe({
-    //   next:(response: any) => {
-    //     this.topRatedList=response['results']
-    //   },
-    //   error: (err: HttpErrorResponse)=>{
-    //     console.log(err)
-    //   }
-    // });
-
-    // var result=this.apiService.getMovies('upcoming');
-    // this.movieSub=result.subscribe({
-    //   next: (response: any)=>{
-    //     this.upComingList=response['results']
-    //   },
-    //   error: (err: HttpErrorResponse) => {
-    //     console.log(err)
-    //   }
-    // });
   }
 
   goToDetails(movieId: number){
     this.router.navigateByUrl(`details/${movieId}`)
   }
   
-  logout(){
-    this.cookieService.delete('token');
-    this.router.navigateByUrl('')
-  }
 }

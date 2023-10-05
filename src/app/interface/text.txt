@@ -1,0 +1,3 @@
+{{movieid}}/similar_movies
+
+recommendations

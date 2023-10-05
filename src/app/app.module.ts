@@ -10,12 +10,13 @@ import { ErrorComponentComponent } from './error-component/error-component.compo
 import { DetailsComponent } from './details/details.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MoviesListComponent } from './movies-list/movies-list.component';
-import { ActorsComponent } from './actors/actors.component';
 import { CookieService } from 'ngx-cookie-service';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { SuggestMoviesComponent } from './suggest-movies/suggest-movies.component';
+import { HightlightDirective } from './hightlight.directive';
+import { RecommendationComponent } from './recommendation/recommendation.component';
+import { SimilarComponent } from './similar/similar.component';
+import { NavabarComponent } from './navabar/navabar.component';
 
 @NgModule({
   declarations: [
@@ -24,20 +25,21 @@ import { SuggestMoviesComponent } from './suggest-movies/suggest-movies.componen
     LandingComponent,
     ErrorComponentComponent,
     DetailsComponent,
-    MoviesListComponent,
-    ActorsComponent,
     SignInComponent,
     SignUpComponent,
-    SuggestMoviesComponent
+    HightlightDirective,
+    RecommendationComponent,
+    SimilarComponent,
+    NavabarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

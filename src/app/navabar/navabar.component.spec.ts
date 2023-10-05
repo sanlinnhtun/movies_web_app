@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActorsComponent } from './actors.component';
+import { NavabarComponent } from './navabar.component';
 
-describe('ActorsComponent', () => {
-  let component: ActorsComponent;
-  let fixture: ComponentFixture<ActorsComponent>;
+describe('NavabarComponent', () => {
+  let component: NavabarComponent;
+  let fixture: ComponentFixture<NavabarComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ActorsComponent]
+      declarations: [NavabarComponent]
     });
-    fixture = TestBed.createComponent(ActorsComponent);
+    fixture = TestBed.createComponent(NavabarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

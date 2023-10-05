@@ -1,30 +1,37 @@
 <!-- https://image.tmdb.org/t/p/w220_and_h330_face/ -->
 <!-- https://image.tmdb.org/t/p/w500/ -->
+<!-- https://image.tmdb.org/t/p/original/ -->
 
 
-<button (click)="logout()">Logout</button>
+<!-- <iframe width="1013" height="570" src="https://www.youtube.com/embed/vS3_72Gb-bI" title="Blue Beetle – Official Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 
-<!------ popular movies ----->
-<div  id="po-ba-img" style="margin-top: 100px">
-    <h1 style="color: #ebe76c; text-align: center;" class="p-4">Popular movies</h1>
+<!-- <h1 appHightlight style="color: aliceblue;">{{today | date: 'd/M/yyy, h:mm a' }}</h1> -->
+
+<div class="hom-back-col">
+  <app-navabar></app-navabar>
+
+    <!------ popular movies ----->
+   <div  id="po-ba-img" style="margin-top: 120px">
+    <p class="p-4 string" style="margin-bottom: -10px;">ONLINE STREAMING</p>
+    <h1 style="color: #FFFFFF; text-align: center;" class="font-fa">Popular Movies</h1>
     <div class="scroll">
       <div class="img-shown" *ngFor="let movie of popularList" (click)="goToDetails(movie['id'])">
         <div class="card">
           <img
           [src]="
-            'https://image.tmdb.org/t/p/w220_and_h330_face/' +
+            'https://image.tmdb.org/t/p/original' +
             movie['poster_path']
           "
           alt="poster"
 
           class="img"
         />
-        <ul style="color: white">
+        <ul style="color: white; font-family: 'IBM Plex Mono', monospace;">
           {{ movie["title"] }}
         </ul>
 
-        <div class="card-title" style="margin-left: 10px; margin-top: -10px; width: 50px; height: 20px; background-color: #080202; text-align: center;">
-          <i class="fa-solid fa-star" style="color: #ffd43b">
+        <div class="card-title star-layout">
+          <i class="fa fa-star-o" aria-hidden="true" style="color: #ffd43b;">
             <span style="color: rgb(211, 199, 199)">
               {{ movie["vote_average"] }}
             </span>
@@ -33,19 +40,18 @@
         </div>
       </div>
     </div>
-</div>
+   </div>
 
-
-<!-- playing now movies -->
-
-<div  id="po-ba-img" style="margin-top: 100px">
-  <h1 style="color: #ebe76c; text-align: center;" class="p-4">Now playing movies</h1>
+    <!-- playing now movies -->
+   <div  id="po-ba-img" style="margin-top: 50px">
+    <p class="string">ONLINE STREAMING</p>
+  <h1 style="color: #FFFFFF; text-align: center;" class="font-fa">Now Playing Movies</h1>
   <div class="scroll">
     <div class="img-shown" *ngFor="let movie of playingNowList" (click)="goToDetails(movie['id'])">
       <div class="card">
         <img
         [src]="
-          'https://image.tmdb.org/t/p/w220_and_h330_face/' +
+          'https://image.tmdb.org/t/p/original' +
           movie['poster_path']
         "
         alt="poster"
@@ -56,8 +62,8 @@
         {{ movie["title"] }}
       </ul>
 
-      <div class="card-title" style="margin-left: 10px; margin-top: -10px; width: 50px; height: 20px; background-color: #080202; text-align: center;">
-        <i class="fa-solid fa-star" style="color: #ffd43b">
+      <div class="card-title star-layout" >
+        <i class="fa fa-star-o" aria-hidden="true" style="color: #ffd43b;">
           <span style="color: rgb(211, 199, 199)">
             {{ movie["vote_average"] }}
           </span>
@@ -66,18 +72,18 @@
       </div>
     </div>
   </div>
-</div>
+   </div>
 
-<!-- Top rated movies -->
-
-<div  id="po-ba-img" style="margin-top: 100px">
-  <h1 style="color: #ebe76c; text-align: center;" class="p-4">Top rated movies</h1>
+   <!-- Top rated movies -->
+   <div  id="po-ba-img" style="margin-top: 50px">
+    <p class="string">ONLINE STREAMING</p>
+  <h1 style="color: #FFFFFF; text-align: center;" class="font-fa">Top Rated Movies</h1>
   <div class="scroll">
     <div class="img-shown" *ngFor="let movie of topRatedList" (click)="goToDetails(movie['id'])">
       <div class="card">
         <img
         [src]="
-          'https://image.tmdb.org/t/p/w220_and_h330_face/' +
+          'https://image.tmdb.org/t/p/original' +
           movie['poster_path']
         "
         alt="poster"
@@ -88,8 +94,8 @@
         {{ movie["title"] }}
       </ul>
 
-      <div class="card-title" style="margin-left: 10px; margin-top: -10px; width: 50px; height: 20px; background-color: #080202; text-align: center;">
-        <i class="fa-solid fa-star" style="color: #ffd43b">
+      <div class="card-title star-layout">
+        <i class="fa fa-star-o" aria-hidden="true" style="color: #ffd43b;">
           <span style="color: rgb(211, 199, 199)">
             {{ movie["vote_average"] }}
           </span>
@@ -98,30 +104,31 @@
       </div>
     </div>
   </div>
-</div>
-<!-- up coming movies -->
+   </div>
 
-<div  id="po-ba-img" style="margin-top: 100px">
-  <h1 style="color: #ebe76c; text-align: center;" class="p-4">Upcoming movies</h1>
+   <!-- up coming movies -->
+   <div  id="po-ba-img" style="margin-top: 50px">
+    <p class="string">ONLINE STREAMING</p>
+    <h1 style="color: #FFFFFF; text-align: center;" class="font-fa">Upcoming Movies</h1>
   <div class="scroll">
     <div class="img-shown" *ngFor="let movie of upComingList" (click)="goToDetails(movie['id'])">
       <div class="card">
         <img
         [src]="
-          'https://image.tmdb.org/t/p/w220_and_h330_face/' +
+          'https://image.tmdb.org/t/p/original' +
           movie['poster_path']
         "
         alt="poster"
 
-        class=""
+        class="img"
       />
       <ul style="color: white">
         {{ movie["title"] }}
       </ul>
 
-      <div class="card-title" style="margin-left: 10px; margin-top: -10px; width: 50px; height: 20px; background-color: #080202; text-align: center;">
-        <i class="fa-solid fa-star" style="color: #ffd43b">
-          <span style="color: rgb(211, 199, 199)">
+      <div class="card-title star-layout">
+        <i class="fa fa-star-o" aria-hidden="true" style="color: #ffd43b;">
+          <span style="color: #ffffff">
             {{ movie["vote_average"] }}
           </span>
         </i>
@@ -129,4 +136,5 @@
     </div>
       </div>
   </div>
+   </div>
 </div>

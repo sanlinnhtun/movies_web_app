@@ -6,9 +6,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { LandingComponent } from './landing/landing.component';
 import { ErrorComponentComponent } from './error-component/error-component.component';
 import { DetailsComponent } from './details/details.component';
-import { ActorsComponent } from './actors/actors.component';
 import { authGuard } from './service/auth.guard';
-import { SuggestMoviesComponent } from './suggest-movies/suggest-movies.component';
 
 const routes: Routes = [
   {
@@ -35,16 +33,6 @@ const routes: Routes = [
   {
     path: 'details/:movieid',
     component: DetailsComponent,
-    canActivate: [authGuard],
-  },
-  {
-    path: 'suggest',
-    component: SuggestMoviesComponent,
-    canActivate: [authGuard]
-  },
-  {
-    path: 'actors',
-    component: ActorsComponent,
     canActivate: [authGuard],
   },
   {

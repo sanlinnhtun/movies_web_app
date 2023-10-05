@@ -3,6 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { ApiService } from '../service/api.service';
 import { Subscription } from 'rxjs';
+import { Cast,CastDetail } from '../interface/cast-details';
+import { Genre, MoviesDetails, ProductionCompany, ProductionCountry } from '../interface/movies-details';
+import { Result, TrailersDetails } from '../interface/trailer';
+// import { RatingModule } from 'primeng/rating';
 
 @Component({
   selector: 'app-details',
@@ -10,13 +14,27 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
+
   moviesub: Subscription = new Subscription();
 
-  posterdetail:any=[];
+  movieID!: number;
+  poster: string='';
+  back_poster: string='';
   overview: string='';
-  movieid!:number;
-  casts:any =[];
-  genres: any=[];
+  casts:  Cast[] =[];
+  genres: Genre[]=[];
+  movietitle: string='';
+  runtime!: number;
+  release_date!: Date;
+  companies: ProductionCompany[]=[];
+  countries: ProductionCountry[]=[];
+  trailer: Result[]=[];
+  trailerkey:string='';
+  rating!: number;
+  imbd_rate: string='';
+  homepage: string='';
+
+
 
   constructor(private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -25,53 +43,68 @@ export class DetailsComponent implements OnInit {
     ){}
 
   ngOnInit() {
-    this.movieid=this.activatedRoute.snapshot.params['movieid'];
-    var poMovDet= this.http.get(`https://api.themoviedb.org/3/movie/${this.movieid}?api_key=435e44180b93a0d2c5376844bbb05fbb&language=en-US&page=2`)
+    this.movieID=this.activatedRoute.snapshot.params['movieid'];
 
-    // var poMovDet= this.apiService.getMovieDetails(this.movieid);
+    var poMovDet= this.apiService.getDetails(this.movieID);
+
     this.moviesub=poMovDet.subscribe({
-      next: (response: any) => {
-        this.posterdetail=response
-        this.genres=response.genres
+      next: (response: MoviesDetails) => {
+        this.overview=response.overview!;
+        this.poster=response.poster_path!;
+        this.back_poster=response.backdrop_path!;
+        this.genres= response['genres']!;
+        this.movietitle=response.title!;
+        this.runtime=response.runtime!;
+        this.rating=response.vote_average!;
+        this.imbd_rate=this.rating.toFixed(1);
+        this.runtime=response.runtime!;
+        this.companies=response['production_companies']!;
+        this.countries=response['production_countries']!;
+        this.release_date=response.release_date!;
+        this.homepage=response.homepage!;
       },
       error: (err: HttpErrorResponse) => {
         console.log(err)
       }
     })
 
-    // poMovDet.subscribe({
-    //   next:(mvty: any) => {
-    //     this.genres=mvty
-    //     console.log(">>>>>>>>>>>>>>>>",this.genres)
-    //   },
-    //   error: (err: HttpErrorResponse)=>{
-    //     console.log(err)
-    //   }
-    // })
 
-    this.moviesub=poMovDet.subscribe({
-      next: (oview: any) => {
-        this.overview=oview
+    var trailerResult=this.apiService.gettrailer(this.movieID)
+    this.moviesub=trailerResult.subscribe({
+      next: (response: TrailersDetails) =>{
+        this.trailer=response['results']!;
+      for(let i=0; i < this.trailer.length; i++){
+        if(this.trailer[i].type == "Trailer" || "Teaser"){
+          this.trailerkey=this.trailer[i].key!;
+          break;
+        }
+      }
       },
-      error: (err: HttpErrorResponse) => {
+      error: (err: HttpErrorResponse)=>{
         console.log(err)
       }
     })
+
+    console.log("my trailler key is >>>>>>>>", this.trailerkey)
 
     this.getCast();
   }
 
   getCast(){
-    var response= this.http.get(`https://api.themoviedb.org/3/movie/${this.movieid}/credits?api_key=435e44180b93a0d2c5376844bbb05fbb&language=en-US&page=2`)
-    response.subscribe({
-      next: (data: any) => {
-        this.casts=data['cast']
+    var response= this.apiService.getcastdetails(this.movieID)
+    this.moviesub=response.subscribe({
+      next: (response: CastDetail) => {
+        this.casts=response['cast']!
       },
       error: (err: HttpErrorResponse)=>{
         console.log(err)
       }
     })
   }
+
+  // traileryoutube() {
+  //   return this.http.get(`https://www.youtube.com/watch?v=${this.trailerkey}`);
+  // }
 
   ngOndestory(): void {
     this.moviesub.unsubscribe

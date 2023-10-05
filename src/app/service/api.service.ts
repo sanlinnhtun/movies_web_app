@@ -8,28 +8,33 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  baseUrl: string='https://api.themoviedb.org/3/movie/';
+  baseUrl: string='https://api.themoviedb.org/3';
   apiKey: string='435e44180b93a0d2c5376844bbb05fbb';
 
-  getMovieDetails(movieid: number){
-    return this.http.get(`${this.baseUrl}${movieid}?api_key=${this.apiKey}language=en-US`)
+  getMovies(category: string){
+    return this.http.get(`${this.baseUrl}/movie/${category}?api_key=${this.apiKey}&language=en-US&page=1`)
   }
 
-  getMovies(category: any){
-    return this.http.get(`${this.baseUrl}${category}?api_key=${this.apiKey}&language=en-US&page=1`)
+  getDetails(movieID: number){
+    return this.http.get(`${this.baseUrl}/movie/${movieID}?api_key=${this.apiKey}&language=en-US&page=1`)
   }
 
-  getactordetil(movieid: number) {
-    return this.http.get(`${this.baseUrl}${movieid}/credits?api_key=${this.apiKey}`)
+
+  getcastdetails(movieID: number) {
+    return this.http.get(`${this.baseUrl}/movie/${movieID}/credits?api_key=${this.apiKey}&language=en-US&page=1`)
+  }
+
+  getsimilarmovies(sml_movieID: number) {
+    return this.http.get(`${this.baseUrl}/movie/${sml_movieID}/similar?api_key=${this.apiKey}&language=en-US&page=1`)
+  }
+
+  gettrailer(movieID: number){
+    return this.http.get(`${this.baseUrl}/movie/${movieID}/videos?api_key=${this.apiKey}&language=en-US&page=1`)
   }
 
   signinUrl: string='https://msi.htoowaiyan.com/api/v1/users/signin';
   signUpUrl: string='https://msi.htoowaiyan.com/api/v1/users/signup';
 
-  // data={
-  //   "email" : "julioeleven3@gmail.com",
-  //   "password" : "password" 
-  // }
 
   options={
     headers: new HttpHeaders({
