@@ -1,7 +1,32 @@
-.similar-cont{
+.onecast-bk{
+    background:linear-gradient(hsla(314, 51%, 15%), hsl(201, 37%, 16%));
+    background-size: cover;
+    /* height: 100vh;
+    position: absolute;
+    width: 100vw;
+    z-index: -1; */
+}
+
+.castimg{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  box-shadow: 0px 2px 50px #000;
+}
+
+.castbio{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 20px 50px #28041c;
+}
+
+/******************************************** cast movies styles *************************************************/
+.cast-movie{
     padding: 5rem 6rem 1rem;
-    /* background: #1E222B;
-    background-size: cover; */
+    background: #1E222B;
+    background-size: cover;
 }
 
 .card-con{
@@ -12,7 +37,6 @@
     width: 220px;
     height: 430px;
     margin-bottom: 20px;
-    /* background: #423875; */
     background: linear-gradient(180deg, hsl(208, 22%, 17%), hsl(221, 40%, 20%));
     cursor: pointer;
 }
@@ -52,3 +76,4 @@
     background-color: #000;
     width: 60px;
 }
+

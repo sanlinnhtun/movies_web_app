@@ -1,0 +1,19 @@
+.item {
+    width: auto;
+    height: auto;
+    margin: 10px auto;
+    border: 1px solid #eaeaea;
+    padding: 1rem;
+    background: #242435;
+  }
+
+  .loader {
+    line-height: 1;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background: rgb(239, 241, 246) no-repeat;
+    background-color: rgb(239, 241, 246);
+    line-height: 1;
+    overflow: hidden;
+    position: relative;
+  }

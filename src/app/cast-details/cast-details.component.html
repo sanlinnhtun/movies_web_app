@@ -1,0 +1,44 @@
+<ng-container *ngIf="loading; else castDetails">
+    <app-castskele></app-castskele>
+</ng-container>
+
+<ng-template #castDetails>
+    <div class="onecast-bk" style="color: #fff;">
+        <div style="padding-top: 2rem; padding-bottom: 5rem;">
+            <img src="https://image.tmdb.org/t/p/original/{{cast_poster}}" class="castimg" width="300" alt="cast">
+            <div  class="castbio" style="width: 90%; padding: 2rem; margin-top: -8rem;">
+                <!-- <img src="https://image.tmdb.org/t/p/original/{{cast_poster}}" class="castimg" width="300" alt="cast"> -->
+                <p style="color: #fff; font-family: 'Overpass', sans-serif; 
+                font-size: 40px; font-weight: 500;">{{castname}}</p>
+                <p style="color: #fff;"><strong style="margin-right: 8px;">Date of birth:</strong> {{castbirthday}}</p>
+                <!-- <p style="color: #fff;"><strong>Date of deat:</strong>{{castdeatday}}</p> -->
+                <p style="color: #fff;"><strong style="margin-right: 8px;">Place of birth:</strong>{{castbirthplace}}</p>
+                <p style="color: #fff;"><strong style="margin-right: 8px;">Known for:</strong>{{knwo_for}}</p>
+                <p style="font-family: 'Chillax', sans-serif; 
+                color: #fff; padding-top: 5px;"
+                >{{castbio}}
+                </p>
+            </div>  
+        </div>
+    </div>
+    
+    
+    <div class="cast-movie">
+        <div class=" row" >
+            <p style="color: #fff; font-family: 'Overpass', sans-serif; 
+            font-size: 40px; font-weight: 500;">{{castname}}'s movies</p>
+            <div class="col card-con" *ngFor="let movie of castMovielist" (click)="goToDetails(movie['id']!)">
+                <div class="card">
+                    <img [src]="'https://image.tmdb.org/t/p/original/'+ movie['poster_path']" class="poster-img" >
+                    <ul style="color: #ffff;"> {{movie['title']}}</ul>
+                    <div class="rating-cont">
+                        <i class="fa fa-star-o" aria-hidden="true" style="color: #e0cb2b;">
+                            <span style="color: #ffff;">{{movie['vote_average'] }}</span>
+                        </i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer-element></app-footer-element>
+</ng-template>

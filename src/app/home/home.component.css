@@ -1,6 +1,5 @@
 /* navbar */
 .hom-back-col{
-
   background: #1E222B;
   background-size: cover;
 }
@@ -51,8 +50,9 @@
     display: flex;
     flex-wrap: no-wrap;
     overflow-x: auto;
-    height: 430px;
+    height: 440px;
     overflow-x: hidden;
+    padding: 1rem;
   }
   
   .img-shown {
@@ -60,6 +60,12 @@
     border-radius: 2.5%;
     margin-bottom: 7px;
   }
+
+  /* .img-shown:hover{
+    border-bottom: #E2D713 dotted 3px;
+    transition: all .3s;
+    border: #E2D713 2px solid;
+  } */
 
   .scroll {
     overflow-x: scroll;
@@ -76,31 +82,43 @@
 .img{
     border-radius: 2%;
     width: 220px;
-    height: 330px;
+    /* height: 330px; */
 }
 
-.img:hover{
-  /* -webkit-transform: scale(1);
-	transform: scale(1);
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
-  -webkit-transform: scale(1.1);
-	transform: scale(1.1); */
-}
+
 
 .card{
   height: 410px;
   background: linear-gradient(315deg, #171D21 0%, #1E222B 75%);
   cursor: pointer;
+  /* border: #E2D713 2px solid;
+  /* padding-top: 1rem; */
 }
 
 .card:hover{
-
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
+  transition:all .5s;
   -webkit-transform: scale(1.1);
 	transform: scale(1.03);
 }
+
+.card::after{
+  content: "";
+  position: absolute;
+  inset: -0.2rem;
+  z-index: -1;
+  background:linear-gradient(var(--angle), 
+  #032146,  #9B59B6, #1ABC9C);
+  animation: rotate 10s linear infinite;
+  transition: all .4s;
+  border-radius: 5px;
+}
+
+@keyframes rotate {
+  0%     { --angle: 0deg; }
+  100%   { --angle: 360deg;
+  }
+}
+
 
 .star-layout{
   margin-left: 10px; 

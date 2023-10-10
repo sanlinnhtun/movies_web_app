@@ -63,7 +63,12 @@
               (click)="signin()"
               [disabled]="!name.valid || !pass.valid"
             >
-              Login
+            <ng-container *ngIf="loading; else butt">
+              <app-spinloader></app-spinloader>
+            </ng-container>
+              <ng-template #butt>
+                Login
+              </ng-template>
             </button>
 
             <!-- [disabled]="!name.valid || !pass.valid" -->

@@ -1,0 +1,82 @@
+.foot-e-cont{
+    background:linear-gradient(hsla(313, 42%, 9%, 0.929), hsl(201, 32%, 10%));
+    background-size: cover;
+    padding: 3rem 3rem 1rem;
+}
+
+/* connection logo */
+.connet-logo{
+    font-size: 28px;
+    color: #FFFFFF;
+    display: flex;
+    text-decoration: none;
+    flex-direction: column;
+    padding: .7rem;
+    text-align: center;
+}
+.btn-inst:hover{
+  color: #A22DA3;
+  transition: all .3s;
+}
+
+.btn-lind:hover{
+  color: #0073B2;
+  transition: all .3s;
+}
+
+.btn-dis:hover{
+  color: #5865F2;
+  transition: all .3s;
+}
+
+.btn-x:hover{
+  color: #1DA1F2;
+  transition: all .3s;
+}
+
+
+  /* details style */
+.btn-sty {
+    cursor: pointer;
+    letter-spacing: 2px;
+    position:relative;
+    overflow:hidden;
+  }
+  
+  .btn-sty:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    background : #FF3B1D;
+    /* left: 45%; */
+    height: 2px;
+    bottom: 0;
+    transition: all .3s;
+    /* opacity: 0.7; */
+  }
+
+  .btn-sty:hover{
+    color: rgb(218, 234, 74); 
+    transition:all .3s;
+  }
+  
+  .btn-hom:hover:before{
+    width: 45%;
+  }
+
+  .btn-pop:hover:before{
+    width: 65%;
+  }
+
+  .btn-np:hover:before{
+    width: 105%;
+  }
+
+  .btn-top:hover:before{
+    width: 80%;
+
+  }
+
+  .btn-up:hover:before{
+     width: 80%;
+  }

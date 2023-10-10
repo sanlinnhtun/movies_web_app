@@ -1,11 +1,30 @@
-.actorContainer{
-    background-color: #FFC436;
+.detail-back-col{
+  background: #1E222B;
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+  /* height: 100vh; */
+}
+
+.pp-actname{
+    padding: 15px;
 }
 
 .card{
     height: 360px;
-    background: linear-gradient(to right, hsl(195, 14%, 17%), rgb(26, 55, 54));
+    background:linear-gradient(hsla(313, 42%, 9%, 0.929), hsl(201, 32%, 10%));
     margin-left: 5px;
+    cursor: pointer;
+}
+
+.card:hover{
+  /* -webkit-transform: scale(1); */
+  transform: scale(1.06);
+  transition: all .4s;
+  border: 1px solid;
+  outline: none;
+border-color: #F5F207;
+box-shadow: 0 0 15px #F5F207;
 }
 
 .scroll {
@@ -21,20 +40,16 @@
     height: 3px;
   }
   .scroll::-webkit-scrollbar-thumb {
-    background-color: #4B527E;
+    background-color: #d3ed0d;
   }
 
-.pp-actname{
-    padding: 15px;
-}
-
 .cast-pp{
-    border-radius: 2% 2% 0% 0%;
+    border-radius: 3% 3% 0% 0%;
 }
-
+/* 
 .h-bapo-img{
 
-}
+} */
 
 .pa-genre{
   background: hsl(0, 0, 0, .4);
@@ -85,4 +100,21 @@
   color: #E27C2B; 
   margin-right: 3%; 
   font-family: 'IBM Plex Mono', monospace;
+}
+
+/***************************************************** tail *********************************************************/
+.cast-SML{
+  background:linear-gradient(hsla(313, 42%, 9%, 0.929), hsl(201, 32%, 10%));
+  background-size: cover;
+}
+
+.cast-cont{
+  margin-top: 2rem;
+  width: 100rem;
+  text-align: center;
+  align-content: center;
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 3%;
+  margin-top: -1px;
 }

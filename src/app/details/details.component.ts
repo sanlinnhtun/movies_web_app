@@ -15,7 +15,11 @@ import { Result, TrailersDetails } from '../interface/trailer';
 })
 export class DetailsComponent implements OnInit {
 
-  moviesub: Subscription = new Subscription();
+  movieSub: Subscription = new Subscription();
+  trailerSub: Subscription= new Subscription();
+  castSub: Subscription= new Subscription();
+
+  loading: boolean= true;
 
   movieID!: number;
   poster: string='';
@@ -47,7 +51,7 @@ export class DetailsComponent implements OnInit {
 
     var poMovDet= this.apiService.getDetails(this.movieID);
 
-    this.moviesub=poMovDet.subscribe({
+    this.movieSub=poMovDet.subscribe({
       next: (response: MoviesDetails) => {
         this.overview=response.overview!;
         this.poster=response.poster_path!;
@@ -62,6 +66,7 @@ export class DetailsComponent implements OnInit {
         this.countries=response['production_countries']!;
         this.release_date=response.release_date!;
         this.homepage=response.homepage!;
+        this.loading=false;
       },
       error: (err: HttpErrorResponse) => {
         console.log(err)
@@ -70,7 +75,7 @@ export class DetailsComponent implements OnInit {
 
 
     var trailerResult=this.apiService.gettrailer(this.movieID)
-    this.moviesub=trailerResult.subscribe({
+    this.trailerSub=trailerResult.subscribe({
       next: (response: TrailersDetails) =>{
         this.trailer=response['results']!;
       for(let i=0; i < this.trailer.length; i++){
@@ -92,7 +97,7 @@ export class DetailsComponent implements OnInit {
 
   getCast(){
     var response= this.apiService.getcastdetails(this.movieID)
-    this.moviesub=response.subscribe({
+    this.castSub=response.subscribe({
       next: (response: CastDetail) => {
         this.casts=response['cast']!
       },
@@ -106,7 +111,19 @@ export class DetailsComponent implements OnInit {
   //   return this.http.get(`https://www.youtube.com/watch?v=${this.trailerkey}`);
   // }
 
-  ngOndestory(): void {
-    this.moviesub.unsubscribe
+  goToDetails(castID: number){
+    this.router.navigateByUrl(`cast/${castID}`)
+  }
+
+  ngOndestory() {
+    if(this.movieSub){
+      this.movieSub.unsubscribe
+    }
+    if(this.trailerSub){
+      this.trailerSub.unsubscribe
+    }
+    if(this.castSub){
+      this.castSub.unsubscribe
+    }
   }
 }

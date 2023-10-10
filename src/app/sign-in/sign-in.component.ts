@@ -22,8 +22,10 @@ export class SignInComponent {
 
   email: string = '';
   password: string = '';
+  loading:boolean=false;
 
   signin() {
+    this.loading=true;
     var result = this.apiService.signin({
       email: this.email,
       password: this.password,

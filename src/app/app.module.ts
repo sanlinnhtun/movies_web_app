@@ -17,6 +17,14 @@ import { HightlightDirective } from './hightlight.directive';
 import { RecommendationComponent } from './recommendation/recommendation.component';
 import { SimilarComponent } from './similar/similar.component';
 import { NavabarComponent } from './navabar/navabar.component';
+import { CastDetailsComponent } from './cast-details/cast-details.component';
+import { FooterElementComponent } from './footer-element/footer-element.component';
+import { SliderComponent } from './slider/slider.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { OuterSkeletonloaderComponent } from './outer-skeletonloader/outer-skeletonloader.component';
+import { InnerSkeletonloaderComponent } from './inner-skeletonloader/inner-skeletonloader.component';
+import { CastskeleComponent } from './castskele/castskele.component';
+import { SpinloaderComponent } from './spinloader/spinloader.component'
 
 @NgModule({
   declarations: [
@@ -31,6 +39,13 @@ import { NavabarComponent } from './navabar/navabar.component';
     RecommendationComponent,
     SimilarComponent,
     NavabarComponent,
+    CastDetailsComponent,
+    FooterElementComponent,
+    SliderComponent,
+    OuterSkeletonloaderComponent,
+    InnerSkeletonloaderComponent,
+    CastskeleComponent,
+    SpinloaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +53,7 @@ import { NavabarComponent } from './navabar/navabar.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSkeletonLoaderModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

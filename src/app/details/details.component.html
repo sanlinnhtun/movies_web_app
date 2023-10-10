@@ -2,89 +2,115 @@
         <!-- src="https://image.tmdb.org/t/p/w220_and_h330_face/{{this.posterdetail['poster_path']}}" -->
 
 
-<div>
+<div >
     <app-navabar></app-navabar>
-    <div style="margin-top: 7.6rem;">
-        <div class="bk-img">
-            <img src="https://image.tmdb.org/t/p/original/{{back_poster}}" alt="">
-        </div>
+    <ng-container *ngIf="loading; else details">
+        <app-inner-skeletonloader></app-inner-skeletonloader>
+    </ng-container>
 
-        <!-- general importent content -->
-        <div class="p-5 back-col" >
-            <div class="d-flex" style="text-align: center;">
-                <div class="pa-genre" *ngFor="let genre of genres">
-                    <span class="genre">
-                        {{genre["name"]}}
-                    </span>
-                </div>
+    <ng-template #details>
+        <div style="margin-top: 7.6rem;">
+            <div class="bk-img">
+                <img src="https://image.tmdb.org/t/p/original/{{back_poster}}" alt="">
             </div>
-                <!-- <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{poster}}" alt="poster" width="300px" height="470px"> -->
-
-            <div class="d-flex" style="margin-top: 5%; ">
-                <p class="import-content" >MIBD:<br>{{imbd_rate}}</p>
-                <span class="import-content" style="font-size: 30px;">|</span>
-                <p class="import-content">Durations:<br>{{runtime}} mins</p>
-                <span class="import-content" style="font-size: 30px;">|</span>
-                <p class="import-content">Release Date:<br>{{release_date}}</p>
-            </div>
-
-            <!-- overview and title -->
-            <p class="p-1" 
-            style="font-family: 'Dela Gothic One', cursive; 
-            font-weight: 400; 
-            font-size: 40px; 
-            color: #FFFFFF;">
-                <strong>{{movietitle}}</strong>
-            </p>
     
-            <p style="font-family: sofia-pro,Arial,sans-serif; color: #ffffff; line-height:230%;">{{ overview }}</p>
-
-            <!-- home page and trailer -->
-
-            <div class="d-flex justify-content-evenly">
-                <a href="https://www.youtube.com/watch?v={{ trailerkey }}" 
-                target="_blank" 
-                style="text-decoration: none;"
-                >
-                  <button class="btn btn-warning" style="font-size: 25px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                    <i style="color: #000000; font-size: 34px;" class="fa-regular fa-circle-play"></i>
-                    Watch Trailer
-                  </button>
-                </a>
-                <a  href="{{homepage}}" style="text-decoration: none;">
-                    <button class="btn btn-info" style="font-size: 25px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><i style="color: #000000; font-size: 34px;" class="fa-solid fa-house"></i>Home page</button>
-                </a>
-            </div>
-
-            <div>
-                <div *ngFor="let country of countries">
-                    <p style="color: aliceblue;">Country: {{country["name"]}}</p>
+            <!-- general importent content -->
+            <div class="p-5 back-col" >
+                <div class="d-flex" style="text-align: center;">
+                    <div class="pa-genre" *ngFor="let genre of genres; let i=index ">
+                        <span class="genre">
+                            {{genre["name"]}}
+                        </span>
+                        <!-- <span *ngIf="i < genres.length - 1" style="font-size: 20px;font-weight: 400; color: #ffffff;">|</span> -->
+                    </div>
                 </div>
-                <div *ngFor="let company of companies">
-                    <p style="color: aliceblue;">Production company: {{company ["name"]}}</p>
+                    <!-- <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{poster}}" alt="poster" width="300px" height="470px"> -->
+    
+                <div class="d-flex" style="margin-top: 5%; ">
+                    <p class="import-content" >MIBD:<br>{{imbd_rate}}</p>
+                    <span class="import-content" style="font-size: 30px;">|</span>
+                    <p class="import-content">Durations:<br>{{runtime}} mins</p>
+                    <span class="import-content" style="font-size: 30px;">|</span>
+                    <p class="import-content">Release Date:<br>{{release_date}}</p>
                 </div>
-            </div>
-
-        </div>
-
-        <!-- <iframe width="1013" height="570" src="https://www.youtube.com/embed/vS3_72Gb-bI" title="Blue Beetle – Official Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
-    </div>
-    <div class="actorContainer mb-4" style="margin-top: 15rem; width: 50rem;">
-        <h2 style="text-align: center;">Casts</h2>
-        <div class="scroll">
-            <div  class="pp-actname" *ngFor="let cast of casts">
-                <div class="card">
-                    <img [src]="'https://image.tmdb.org/t/p/original'+cast['profile_path']" 
-                    alt="actor profile" width="150px" height="220px" class="cast-pp">
-                    <br>
-                    <div class="p-2">
-                        <h5  style="color: #ffff; font-family: 'IBM Plex Mono', monospace;">{{cast['name']}}</h5>
-                        <h6 style="color: #cdb3c7; font-family:  'IBM Plex Mono', monospace;" >{{cast['character']}}</h6>
+    
+                <!-- overview and title -->
+                <p class="p-1" 
+                style="font-family: 'Dela Gothic One', cursive; 
+                font-weight: 400; 
+                font-size: 40px; 
+                color: #FFFFFF;">
+                    <strong>{{movietitle}}</strong>
+                </p>
+        
+                <p style="font-family: 'Chillax', sans-serif; color: #ffffff;font-weight: 500; ">{{ overview }}</p>
+    
+                <!-- home page and trailer -->
+    
+                <div class="d-flex justify-content-stard">
+                    <a href="https://www.youtube.com/watch?v={{ trailerkey }}" 
+                    target="_blank" 
+                    style="text-decoration: none;"
+                    >
+                      <button class="btn btn-warning" style="font-size: 25px; font-family: 'Catamaran', sans-serif; margin-right: 3rem;">
+                        <i style="color: #000000; font-size: 34px;" class="fa-regular fa-circle-play"></i>
+                        Watch Trailer
+                      </button>
+                    </a>
+                    <a  href="{{homepage}}" style="text-decoration: none;" target="_blank">
+                        <button class="btn btn-info" style="font-size: 25px; font-family: 'Catamaran', sans-serif;"><i style="color: #000000; font-size: 34px;" class="fa-solid fa-house"></i>Home page</button>
+                    </a>
+                </div>
+    
+                <!------------------ production company and country ---------------------------------->
+                <div style="margin-top: 20px;">
+                    <div class="mb-4">
+                        <strong style="color: #FFFFFF;">Country: </strong>
+                        <ng-container *ngFor="let country of countries; let i = index">
+                            <span style="color: #ffffff;font-family: 'Chillax', sans-serif; font-weight: 400;">{{country["name"]}}</span>
+                            <span *ngIf="i < countries.length - 1" style="color: #ffffff;"> | </span>
+                        </ng-container>
+                    </div>
+                    <div>
+                        <strong style="color: #FFFFFF;">Production:</strong>
+                        <ng-container *ngFor="let company of companies; let i=index">
+                            <span style="color: #ffffff; font-family: 'Chillax', sans-serif; font-weight: 400;">
+                                {{company ["name"]}}
+                            </span>
+                            <span *ngIf="i < companies.length-1" style="color: #ffffff; font-size: 1rem; font-weight: 100;">|</span>
+                        </ng-container>
                     </div>
                 </div>
             </div>
+    
+            <!-- <iframe width="1013" height="570" src="https://www.youtube.com/embed/vS3_72Gb-bI" title="Blue Beetle – Official Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
         </div>
-    </div>
-
-    <app-similar></app-similar>
+        <div class="cast-SML">
+            <div class="cast-cont">
+                <h2 style="text-align: center; 
+                color: #FFFFFF; 
+                border: #cdb3c7 2px solid;
+                padding: 5px;
+                border-radius: 20px;
+                width: 10rem;">
+                   Casts
+                </h2>
+                <div class="scroll">
+                    <div  class="pp-actname" *ngFor="let cast of casts" (click)="goToDetails(cast['id']!)">
+                        <div class="card">
+                            <img [src]="'https://image.tmdb.org/t/p/original'+cast['profile_path']" 
+                            alt="actor profile" width="150px" height="220px" class="cast-pp">
+                            <br>
+                            <div class="p-2">
+                                <p  style="color: #ffff; font-family: 'IBM Plex Mono', monospace;">{{cast['name']}}</p>
+                                <p style="color: #cdb3c7; font-family:  'IBM Plex Mono', monospace;" >{{cast['character']}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <app-similar></app-similar>
+            <app-footer-element></app-footer-element>
+        </div>
+    </ng-template>
 </div>

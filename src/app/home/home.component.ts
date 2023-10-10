@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   today=Date.now()
 
   safeSrc: SafeResourceUrl;
+  loading: boolean=true;
 
   popularList=[];
   playingNowList=[];
@@ -35,7 +36,8 @@ export class HomeComponent implements OnInit {
         next: (response: any) => {
           this.popularList = response['results']
           console.log(response['results'])
-          resolve(true)
+          resolve(true);
+          this.loading=false
         },
         error: (err: HttpErrorResponse) => {
           console.log(err);
@@ -51,7 +53,8 @@ export class HomeComponent implements OnInit {
       this.movieSub = result.subscribe({
         next: (response: any) =>{
           this.playingNowList= response['results']
-          resolve(true)
+          resolve(true);
+          this.loading=false;
         },
         error:(err: HttpErrorResponse) =>{
           console.log(err);
@@ -67,7 +70,8 @@ export class HomeComponent implements OnInit {
       this.movieSub =result.subscribe({
         next:(response: any) => {
           this.topRatedList=response['results']
-          reslove(true)
+          reslove(true);
+          this.loading=false
         },
         error: (err: HttpErrorResponse)=>{
           console.log(err)
@@ -83,7 +87,8 @@ export class HomeComponent implements OnInit {
       this.movieSub=result.subscribe({
         next: (response: any)=>{
           this.upComingList=response['results']
-          reslove(true)
+          reslove(true);
+          this.loading=false;
         },
         error: (err: HttpErrorResponse) => {
           console.log(err)
@@ -108,6 +113,10 @@ export class HomeComponent implements OnInit {
 
   goToDetails(movieId: number){
     this.router.navigateByUrl(`details/${movieId}`)
+  }
+  
+  ngOndestory(): void {
+    this.movieSub.unsubscribe
   }
   
 }

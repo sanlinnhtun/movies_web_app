@@ -1,17 +1,21 @@
+<div class="similar-cont">
+    <ng-container *ngIf="loading; else similarmovie">
+        <app-outer-skeletonloader></app-outer-skeletonloader>
+    </ng-container>
 
-<div class="d-flex">
-    <div class=" row" >
-        <div class="col card-con" *ngFor="let movie of smlmovielist">
-            <div class="card">
-                <img [src]="'https://image.tmdb.org/t/p/original'+ movie['poster_path']" alt="" width="220" height="330">
-                <ul> {{movie['title']}}</ul>
-                <i class="fa fa-star-o" aria-hidden="true" style="color: #e0cb2b;">
-                    <span style="color: #190606;">{{movie['vote_average'] }}</span>
-                </i>
+      <ng-template #similarmovie>
+        <div class=" row" >
+            <div class="col card-con" *ngFor="let movie of smlmovielist" (click)="goToDetails(movie['id']!)">
+                <div class="card">
+                    <img [src]="'https://image.tmdb.org/t/p/original'+ movie['poster_path']" class="poster-img" >
+                    <ul style="color: #ffff;"> {{movie['title']}}</ul>
+                    <div class="rating-cont">
+                        <i class="fa fa-star-o" aria-hidden="true" style="color: #e0cb2b;">
+                            <span style="color: #ffff;">{{movie['vote_average'] }}</span>
+                        </i>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+      </ng-template>
 </div>
-
-
-
