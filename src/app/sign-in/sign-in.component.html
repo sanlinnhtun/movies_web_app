@@ -32,8 +32,11 @@
                     #name="ngModel"
                   />
 
-                  
-                  <span style="color: #e63131;" *ngIf="!name.valid && name.touched" >Invalid email !</span>
+                  <span
+                    style="color: #e63131"
+                    *ngIf="!name.valid && name.touched"
+                    >Invalid email !</span
+                  >
                 </div>
               </div>
             </div>
@@ -53,7 +56,9 @@
                 #pass="ngModel"
               />
 
-              <span style="color: #e63131;" *ngIf="!pass.valid && pass.touched"  >Invalid password!</span>
+              <span style="color: #e63131" *ngIf="!pass.valid && pass.touched"
+                >Invalid password!</span
+              >
             </div>
 
             <!-- Submit button -->
@@ -63,12 +68,10 @@
               (click)="signin()"
               [disabled]="!name.valid || !pass.valid"
             >
-            <ng-container *ngIf="loading; else butt">
-              <app-spinloader></app-spinloader>
-            </ng-container>
-              <ng-template #butt>
-                Login
-              </ng-template>
+              <ng-container *ngIf="loading; else butt">
+                <app-spinloader></app-spinloader>
+              </ng-container>
+              <ng-template #butt> Login </ng-template>
             </button>
 
             <!-- [disabled]="!name.valid || !pass.valid" -->

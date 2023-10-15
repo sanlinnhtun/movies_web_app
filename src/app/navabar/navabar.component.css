@@ -17,109 +17,77 @@
 
   /************************************** search ***********************************/
   .searchbar{
-    background-color: #E2D703;
-    border-radius: 30px;
-    padding: 10px;
-    }
+    border-bottom: #E2D703 2px solid;
+  }
 
-    .search_input{
-    color: white;
-    border: 0;
-    outline: 0;
-    background: none;
-    width: 0;
-    caret-color:transparent;
-    line-height: 40px;
-    transition: width 0.4s linear;
-    }
+  .search_input{
+    height: 37px;
+    width: 15rem;
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #fff;
+  }
+  .search_input::placeholder{
+    color: #fff;
+  }
 
-    .searchbar:hover > .search_input{
-    padding: 0 10px;
-    width: 250px;
-    caret-color:red;
-    transition: width 0.4s linear;
-    }
-
-    .searchbar:hover > .search_icon{
-    background: white;
-    color: #e74c3c;
-    }
-
-    .search_icon{
-    height: 45px;
-    width: 45px;
-    /* float: right; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color:white;
-    text-decoration:none;
-    }
+  .search_icon{
+    background-color: transparent;
+    font-size: larger;
+    color: #fff;
+  }
 
     /************************************* content *****************************/
-    nav {
-        position: relative;
-      }
-      nav a {
-        line-height: 50px;
-        font-size: 15px;
-        display: inline-block;
-        position: relative;
-        z-index: 1;
-        text-decoration: none;
-        text-transform: uppercase;
-        text-align: center;
-        color: white;
+    .container-cont{
+
+    }
+
+      .atag {
         cursor: pointer;
+        letter-spacing: 2px;
+        position:relative;
+        overflow:hidden;
+        padding: 20px 20px 8px 20px;;
+        text-decoration: none;
+        color: #fff;
       }
-      nav .animation {
+
+      .atag:before {
+        content: "";
         position: absolute;
-        height: 100%;
-        top: 0;
-        z-index: 0;
-        transition: all .5s ease 0s;
-        border-radius: 8px;
+        width: 0;
+        background : #FF3B1D;
+        height: 2px;
+        bottom: 0;
+        transition: all .4s;
       }
-      .atag:nth-child(1) {
-        width: 100px;
+
+      .atag:hover{
+        color: rgb(218, 234, 74); 
+        transition:all .3s;
       }
-      .atag:nth-child(2) {
-        width: 140px;
+
+      .btn-hom:hover:before{
+        padding-top: -20px;
+        width: 58%;
       }
-      .atag:nth-child(3) {
-        width: 100px;
+    
+      .btn-pop:hover:before{
+        width: 65%;
       }
-      .atag:nth-child(4) {
-        width: 140px;
+    
+      .btn-np:hover:before{
+        width: 75%;
       }
-      .atag:nth-child(5) {
-        width: 120px;
+    
+      .btn-top:hover:before{
+        width: 70%;
+    
       }
-      nav .start-home, a:nth-child(1):hover~.animation {
-        width: 100px;
-        left: 0;
-        background-color: #1abc9c;
-      }
-      nav .start-about, a:nth-child(2):hover~.animation {
-        width: 140px;
-        left: 100px;
-        background-color: #e74c3c;
-      }
-      nav .start-blog, a:nth-child(3):hover~.animation {
-        width: 100px;
-        left: 240px;
-        background-color: #3498db;
-      }
-      nav .start-portefolio, a:nth-child(4):hover~.animation {
-        width: 120px;
-        left: 350px;
-        background-color: #9b59b6;
-      }
-      nav .start-contact, a:nth-child(5):hover~.animation {
-        width: 110px;
-        left: 485px;
-        background-color: #e67e22;
+    
+      .btn-up:hover:before{
+         width: 75%;
       }
       
       p {
@@ -141,7 +109,7 @@
         height: 40px;
         color: #fff;
         border-radius: 5px;
-        padding: 10px 25px;
+        margin-right: -5rem;
         font-family: 'Lato', sans-serif;
         font-weight: 500;
         background: transparent;
@@ -153,10 +121,11 @@
 
       .btn-8 {
         background-color: #f0ecfc;
-        background-image: linear-gradient(315deg, #90e0ef 0%, #00b4d8 74%);
+        background: transparent;
         line-height: 42px;
         padding: 0;
-        border: none;
+        border: 1px solid #E27C2B;
+
       }
       .btn-8 span {
         position: relative;
@@ -188,7 +157,7 @@
         width: 100%;
       }
       .btn-8:hover{
-        background: transparent;
+        background-image: linear-gradient(315deg, #90e0ef 0%, #00b4d8 74%);
       }
       .btn-8 span:hover{
         color: #faf5f5;

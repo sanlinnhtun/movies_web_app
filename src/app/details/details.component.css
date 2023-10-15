@@ -23,8 +23,8 @@
   transition: all .4s;
   border: 1px solid;
   outline: none;
-border-color: #F5F207;
-box-shadow: 0 0 15px #F5F207;
+border-color: #1aacaa;
+box-shadow: 0 0 15px #1aacaa;
 }
 
 .scroll {
@@ -89,7 +89,7 @@ box-shadow: 0 0 15px #F5F207;
 
 .genre{
   margin-right: 1rem;
- background: hsl(57, 97%, 45%, .7);
+ background: hsl(207, 40%, 62%, .7);
  padding: 9px;
  color: #ffffff;
  border-radius: 15px;
@@ -97,7 +97,7 @@ box-shadow: 0 0 15px #F5F207;
 }
 
 .import-content{
-  color: #E27C2B; 
+  color: #eb7414; 
   margin-right: 3%; 
   font-family: 'IBM Plex Mono', monospace;
 }

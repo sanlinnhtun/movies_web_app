@@ -2,7 +2,6 @@
 <!-- https://image.tmdb.org/t/p/w500/ -->
 <!-- https://image.tmdb.org/t/p/original/ -->
 
-
 <!-- <iframe width="1013" height="570" src="https://www.youtube.com/embed/vS3_72Gb-bI" title="Blue Beetle – Official Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
 
 <!-- <h1 appHightlight style="color: aliceblue;">{{today | date: 'd/M/yyy, h:mm a' }}</h1> -->
@@ -12,78 +11,42 @@
 
   <!-- <app-slider></app-slider> -->
 
-    <!-- <app-outer-skeletonloader></app-outer-skeletonloader> -->
-    <!-- <ng-container *ngIf="innerSkeleton; else moviescompontet">
+  <!-- <app-outer-skeletonloader></app-outer-skeletonloader> -->
+  <!-- <ng-container *ngIf="innerSkeleton; else moviescompontet">
       <app-inner-skeletonloader></app-inner-skeletonloader>
     </ng-container> -->
 
-    <ng-container *ngIf="loading; else movies">
-      <app-outer-skeletonloader></app-outer-skeletonloader>
-    </ng-container>
+  <ng-container *ngIf="loading; else movies">
+    <app-outer-skeletonloader></app-outer-skeletonloader>
+  </ng-container>
 
-    <ng-template #movies>
-          <!----------------------------- popular movies ------------------------>
-    <div  id="po-ba-img" style="margin-top: 120px">
-      <p class="p-4 string" style="margin-bottom: -10px;">ONLINE STREAMING</p>
-      <h1 style="color: #FFFFFF; text-align: center;" class="font-fa">Popular Movies</h1>
+  <ng-template #movies>
+    <!----------------------------- popular movies ------------------------>
+    <div id="po-ba-img" style="margin-top: 6.5rem">
+      <p class="p-4 string" style="margin-bottom: -10px">ONLINE STREAMING</p>
+      <h1 style="color: #ffffff; text-align: center" class="font-fa">
+        Popular Movies
+      </h1>
       <div class="scroll">
-        <div class="img-shown" *ngFor="let movie of popularList" (click)="goToDetails(movie['id'])">
+        <div
+          class="img-shown"
+          *ngFor="let movie of popularList"
+          (click)="goToDetails(movie['id'])"
+        >
           <div class="card">
-            <img [src]="'https://image.tmdb.org/t/p/original' + movie['poster_path']" alt="poster" class="img"/>
-            <p style="color: #fff;font-family: 'Overpass', sans-serif; ">
-                {{ movie["title"] }}
-            </p>
-
-            <div class="card-title star-layout">
-              <i class="fa fa-star-o" aria-hidden="true" style="color: #ffd43b;">
-                <span style="color: rgb(211, 199, 199)">
-                  {{ movie["vote_average"] }}
-                </span>
-              </i>
-            </div>
-          </div>
-        </div>
-      </div>
-   </div>
-
-    <!-- playing now movies -->
-   <div  id="po-ba-img" style="margin-top: 50px">
-      <p class="string">ONLINE STREAMING</p>
-      <h1 style="color: #FFFFFF; text-align: center;" class="font-fa">Now Playing Movies</h1>
-      <div class="scroll">
-         <div class="img-shown" *ngFor="let movie of playingNowList" (click)="goToDetails(movie['id'])">
-            <div class="card">
-              <img [src]="'https://image.tmdb.org/t/p/original' +movie['poster_path']"alt="poster"class="img"/>
-              <p style="color: #fff; font-family: 'Overpass', sans-serif; ">
-                 {{ movie["title"] }}
-              </p>
-
-              <div class="card-title star-layout" >
-                <i class="fa fa-star-o" aria-hidden="true" style="color: #ffd43b;">
-                  <span style="color: rgb(211, 199, 199)">
-                    {{ movie["vote_average"] }}
-                 </span>
-                </i>
-              </div>
-            </div>
-         </div>
-      </div>
-   </div>
-
-   <!-- Top rated movies -->
-   <div  id="po-ba-img" style="margin-top: 50px">
-      <p class="string">ONLINE STREAMING</p>
-      <h1 style="color: #FFFFFF; text-align: center;" class="font-fa">Top Rated Movies</h1>
-      <div class="scroll">
-        <div class="img-shown" *ngFor="let movie of topRatedList" (click)="goToDetails(movie['id'])">
-          <div class="card">
-            <img [src]="'https://image.tmdb.org/t/p/original' + movie['poster_path']" alt="poster" class="img"/>
-            <p style="color: #fff;font-family: 'Overpass', sans-serif; ">
+            <img
+              [src]="
+                'https://image.tmdb.org/t/p/original' + movie['poster_path']
+              "
+              alt="poster"
+              class="img"
+            />
+            <p style="color: #fff; font-family: 'Overpass', sans-serif">
               {{ movie["title"] }}
             </p>
 
             <div class="card-title star-layout">
-              <i class="fa fa-star-o" aria-hidden="true" style="color: #ffd43b;">
+              <i class="fa fa-star-o" aria-hidden="true" style="color: #ffd43b">
                 <span style="color: rgb(211, 199, 199)">
                   {{ movie["vote_average"] }}
                 </span>
@@ -92,32 +55,116 @@
           </div>
         </div>
       </div>
-   </div>
+    </div>
 
-   <!-- up coming movies -->
-   <div  id="po-ba-img" style="margin-top: 50px">
+    <!-- playing now movies -->
+    <div id="po-ba-img" style="margin-top: 50px">
       <p class="string">ONLINE STREAMING</p>
-      <h1 style="color: #FFFFFF; text-align: center;" class="font-fa">Upcoming Movies</h1>
+      <h1 style="color: #ffffff; text-align: center" class="font-fa">
+        Now Playing Movies
+      </h1>
       <div class="scroll">
-        <div class="img-shown" *ngFor="let movie of upComingList" (click)="goToDetails(movie['id'])">
+        <div
+          class="img-shown"
+          *ngFor="let movie of playingNowList"
+          (click)="goToDetails(movie['id'])"
+        >
           <div class="card">
-             <img [src]="'https://image.tmdb.org/t/p/original' +movie['poster_path']"alt="poster"class="img"/>
-             <p style="color: #fff;font-family: 'Overpass', sans-serif; ">
-                 {{ movie["title"] }}
-             </p>
+            <img
+              [src]="
+                'https://image.tmdb.org/t/p/original' + movie['poster_path']
+              "
+              alt="poster"
+              class="img"
+            />
+            <p style="color: #fff; font-family: 'Overpass', sans-serif">
+              {{ movie["title"] }}
+            </p>
 
-             <div class="card-title star-layout">
-                <i class="fa fa-star-o" aria-hidden="true" style="color: #ffd43b;">
-                <span style="color: #ffffff">
-                   {{ movie["vote_average"] }}
+            <div class="card-title star-layout">
+              <i class="fa fa-star-o" aria-hidden="true" style="color: #ffd43b">
+                <span style="color: rgb(211, 199, 199)">
+                  {{ movie["vote_average"] }}
                 </span>
-                 </i>
+              </i>
             </div>
           </div>
         </div>
       </div>
-   </div>
-    </ng-template>
+    </div>
 
-   <app-footer-element></app-footer-element>
+    <!-- Top rated movies -->
+    <div id="po-ba-img" style="margin-top: 50px">
+      <p class="string">ONLINE STREAMING</p>
+      <h1 style="color: #ffffff; text-align: center" class="font-fa">
+        Top Rated Movies
+      </h1>
+      <div class="scroll">
+        <div
+          class="img-shown"
+          *ngFor="let movie of topRatedList"
+          (click)="goToDetails(movie['id'])"
+        >
+          <div class="card">
+            <img
+              [src]="
+                'https://image.tmdb.org/t/p/original' + movie['poster_path']
+              "
+              alt="poster"
+              class="img"
+            />
+            <p style="color: #fff; font-family: 'Overpass', sans-serif">
+              {{ movie["title"] }}
+            </p>
+
+            <div class="card-title star-layout">
+              <i class="fa fa-star-o" aria-hidden="true" style="color: #ffd43b">
+                <span style="color: rgb(211, 199, 199)">
+                  {{ movie["vote_average"] }}
+                </span>
+              </i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- up coming movies -->
+    <div id="po-ba-img" style="margin-top: 50px">
+      <p class="string">ONLINE STREAMING</p>
+      <h1 style="color: #ffffff; text-align: center" class="font-fa">
+        Upcoming Movies
+      </h1>
+      <div class="scroll">
+        <div
+          class="img-shown"
+          *ngFor="let movie of upComingList"
+          (click)="goToDetails(movie['id'])"
+        >
+          <div class="card">
+            <img
+              [src]="
+                'https://image.tmdb.org/t/p/original' + movie['poster_path']
+              "
+              alt="poster"
+              class="img"
+            />
+            <p style="color: #fff; font-family: 'Overpass', sans-serif">
+              {{ movie["title"] }}
+            </p>
+
+            <div class="card-title star-layout">
+              <i class="fa fa-star-o" aria-hidden="true" style="color: #ffd43b">
+                <span style="color: #ffffff">
+                  {{ movie["vote_average"] }}
+                </span>
+              </i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <app-footer-element></app-footer-element>
 </div>

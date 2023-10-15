@@ -11,26 +11,25 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./sign-in.component.css'],
 })
 export class SignInComponent {
-
   constructor(
     private apiService: ApiService,
     private router: Router,
     private cookieService: CookieService
   ) {}
 
-  movieSub: Subscription= new Subscription();
+  movieSub: Subscription = new Subscription();
 
   email: string = '';
   password: string = '';
-  loading:boolean=false;
+  loading: boolean = false;
 
   signin() {
-    this.loading=true;
+    this.loading = true;
     var result = this.apiService.signin({
       email: this.email,
       password: this.password,
     });
-    this.movieSub=result.subscribe({
+    this.movieSub = result.subscribe({
       next: (response: any) => {
         if (response.status == 'success') {
           console.log(response);
@@ -46,7 +45,7 @@ export class SignInComponent {
     });
   }
 
-  ngOndestory(): void{
-    this.movieSub.unsubscribe
+  ngOndestory(): void {
+    this.movieSub.unsubscribe;
   }
 }

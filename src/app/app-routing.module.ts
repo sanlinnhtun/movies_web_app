@@ -8,10 +8,8 @@ import { ErrorComponentComponent } from './error-component/error-component.compo
 import { DetailsComponent } from './details/details.component';
 import { authGuard } from './service/auth.guard';
 import { CastDetailsComponent } from './cast-details/cast-details.component';
-import { InnerSkeletonloaderComponent } from './inner-skeletonloader/inner-skeletonloader.component';
-import { OuterSkeletonloaderComponent } from './outer-skeletonloader/outer-skeletonloader.component';
-import { CastskeleComponent } from './castskele/castskele.component';
 import { SpinloaderComponent } from './spinloader/spinloader.component';
+import { SliderComponent } from './slider/slider.component';
 
 const routes: Routes = [
   {
@@ -28,6 +26,10 @@ const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    path: 'slide',
+    component: SliderComponent,
+  },
+  {
     path: 'signin',
     component: SignInComponent,
   },
@@ -39,10 +41,12 @@ const routes: Routes = [
     path: 'details/:movieid',
     component: DetailsComponent,
     canActivate: [authGuard],
-  },{
+  },
+  {
     path: 'spin',
-    component: SpinloaderComponent
-  },{
+    component: SpinloaderComponent,
+  },
+  {
     path: 'cast/:castid',
     component: CastDetailsComponent,
     canActivate: [authGuard],

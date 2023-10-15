@@ -1,152 +1,179 @@
 <!-- Section: Design Block -->
 <section class="text-center su-ba-img d-flex align-items-center flex-column">
-  
-    <div class="card col-md-6" style="
-          margin-top: -100px;
-          background: hsla(0, 0%, 100%, 0.1);
-          margin-top: 100px;
-          border: #7D7C7C 1px solid;
-          box-shadow: 0 0 20px #4F709C;
-          ">
-      <div class="card-body" style="color: #F3FDE8;">
-  
-        <div class="row d-flex justify-content-center">
-          <div class="col-lg-8">
-            <h2 class="fw-bold mb-5">Sign up now</h2>
-            <form [formGroup]="signUpForm">
-              <!-- 2 column grid layout with text inputs for the first and last names -->
+  <div
+    class="card col-md-6"
+    style="
+      margin-top: -100px;
+      background: hsla(0, 0%, 100%, 0.1);
+      margin-top: 100px;
+      border: #7d7c7c 1px solid;
+      box-shadow: 0 0 20px #4f709c;
+    "
+  >
+    <div class="card-body" style="color: #f3fde8">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Sign up now</h2>
+          <form [formGroup]="signUpForm">
+            <!-- 2 column grid layout with text inputs for the first and last names -->
 
-
-              <div class="row mb-4">
-                <!-- first name -->
-                <div class="col-md-6 mb-1">
-                  <div class="form-outline">
-                    <input
-                      type="text"
-                      name="text"
-                      id="text"
-                      class="form-control"
-                      placeholder="First name"
-                      formControlName="firstName"
-                    />
-                  </div>
-                </div>
-                <!-- last name -->
-                <div class="col-md-6 mb-1">
-                  <div class="form-outline">
-                    <input 
+            <div class="row mb-4">
+              <!-- first name -->
+              <div class="col-md-6 mb-1">
+                <div class="form-outline">
+                  <input
                     type="text"
-                    name="text" 
-                    id="text" 
-                    class="form-control" 
+                    name="text"
+                    id="text"
+                    class="form-control"
+                    placeholder="First name"
+                    formControlName="firstName"
+                  />
+                </div>
+              </div>
+              <!-- last name -->
+              <div class="col-md-6 mb-1">
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    name="text"
+                    id="text"
+                    class="form-control"
                     placeholder="Last name"
                     formControlName="lastName"
-                    />
-                  </div>
+                  />
                 </div>
+              </div>
 
-                <span 
-                style="color: #e63131;"
-                *ngIf="!signUpForm.controls['firstName'].valid && signUpForm.controls['firstName'].touched && 
-                !signUpForm.controls['lastName'].valid &&  signUpForm.controls['lastName'].touched"
+              <span
+                style="color: #e63131"
+                *ngIf="
+                  !signUpForm.controls['firstName'].valid &&
+                  signUpForm.controls['firstName'].touched &&
+                  !signUpForm.controls['lastName'].valid &&
+                  signUpForm.controls['lastName'].touched
+                "
                 >Username is required must have 9 characters!
               </span>
+            </div>
 
-              </div>
-  
-              <!-- Email input -->
-              <div class="form-outline mb-4">
-                <input 
-                type="email" 
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input
+                type="email"
                 name="email"
-                id="email" 
-                class="form-control mb-1" 
+                id="email"
+                class="form-control mb-1"
                 placeholder="Email address"
                 formControlName="email"
-                />
+              />
 
-                <span style="color: #e63131;" 
-                *ngIf="!signUpForm.controls['email'].valid && signUpForm.controls['email'].touched">Invalid Email!</span>
-              </div>
-  
-              <!-- Password input -->
-              <div class="form-outline mb-4">
-                <input 
-                type="password" 
+              <span
+                style="color: #e63131"
+                *ngIf="
+                  !signUpForm.controls['email'].valid &&
+                  signUpForm.controls['email'].touched
+                "
+                >Invalid Email!</span
+              >
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <input
+                type="password"
                 name="password"
-                id="password" 
-                class="form-control mb-1" 
+                id="password"
+                class="form-control mb-1"
                 placeholder="Password"
                 formControlName="password"
-                />
-                <span style="color: #e63131;" 
-                *ngIf="!signUpForm.controls['password'].valid && signUpForm.controls['password'].touched">Invalid password!</span>
-              </div>
+              />
+              <span
+                style="color: #e63131"
+                *ngIf="
+                  !signUpForm.controls['password'].valid &&
+                  signUpForm.controls['password'].touched
+                "
+                >Invalid password!</span
+              >
+            </div>
 
-              <!-- comfirm password -->
-              <div class="form-outline mb-4">
-                <input 
-                type="password" 
+            <!-- comfirm password -->
+            <div class="form-outline mb-4">
+              <input
+                type="password"
                 name="confirmPass"
-                id="confirmPass" 
-                class="form-control mb-1" 
+                id="confirmPass"
+                class="form-control mb-1"
                 placeholder="comfirm password"
                 formControlName="confirmPass"
-                />
-                <span style="color: #e63131;" 
-                *ngIf="!signUpForm.controls['confirmPass'].valid && signUpForm.controls['confirmPass'].touched">Invalid confirmpassword!</span>
-              </div>
-  
-              <!-- Checkbox -->
-              <div class="form-check d-flex justify-content-center mb-4">
-                <input class="form-check-input me-2" type="checkbox"  id="checkbox" />
-                <label class="form-check-label" for="checkbox">
-                  Subscribe to our newsletter
-                </label>
-              </div>
-  
-              <!-- Submit button -->
-              <button 
-              type="submit" 
-              class="btn  mb-3 signup-btn"
-              [disabled]="!signUpForm.valid || !signUpForm.touched"
-              (click)="signUp()"
+              />
+              <span
+                style="color: #e63131"
+                *ngIf="
+                  !signUpForm.controls['confirmPass'].valid &&
+                  signUpForm.controls['confirmPass'].touched
+                "
+                >Invalid confirmpassword!</span
               >
-                Sign up
+            </div>
+
+            <!-- Checkbox -->
+            <div class="form-check d-flex justify-content-center mb-4">
+              <input
+                class="form-check-input me-2"
+                type="checkbox"
+                id="checkbox"
+              />
+              <label class="form-check-label" for="checkbox">
+                Subscribe to our newsletter
+              </label>
+            </div>
+
+            <!-- Submit button -->
+            <button
+              type="submit"
+              class="btn mb-3 signup-btn"
+              [disabled]="!signUpForm.valid || !signUpForm.touched"
+              (click)="signup()"
+            >
+              <ng-container *ngIf="loading; else butt">
+                <app-spinloader></app-spinloader>
+              </ng-container>
+              <ng-template #butt> Sign up </ng-template>
+            </button>
+
+            <!-- Login here -->
+            <p>
+              Have already an account?
+              <a href="signin" class="fw-bold">
+                <u>Login here</u>
+              </a>
+            </p>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+              <p>or sign up with:</p>
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
               </button>
 
-              <!-- Login here -->
-              <p >
-                Have already an account? 
-                <a href="signin"
-                  class="fw-bold ">
-                  <u>Login here</u>
-                </a>
-              </p>
-  
-              <!-- Register buttons -->
-              <div class="text-center">
-                <p>or sign up with:</p>
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </button>
-  
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                 <i class="fa fa-google" aria-hidden="true"></i>
-                </button>
-  
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                   <i class="fa fa-twitter" aria-hidden="true"></i>
-                </button>
-  
-                <button type="button" class="btn btn-link btn-floating mx-1">
-                   <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </button>
-              </div>
-            </form>
-          </div>
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fa fa-google" aria-hidden="true"></i>
+              </button>
+
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </button>
+
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </section>
-  <!-- Section: Design Block -->
+  </div>
+</section>
+<!-- Section: Design Block -->
