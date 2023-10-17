@@ -117,10 +117,6 @@ export class DetailsComponent implements OnInit {
     this.router.navigateByUrl(`cast/${castID}`);
   }
 
-  resetPage() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-  }
-
   ngOndestory() {
     if (this.movieSub) {
       this.movieSub.unsubscribe;
